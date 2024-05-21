@@ -1,0 +1,9 @@
+version: '3.8'
+
+services:
+  kuyua-api:
+    build: ../kuyua.tree.cover.loss.API
+    ports:
+      - "8080:3000" # Map host port 8080 to container port 3000 (adjust if needed)
+    volumes:
+      - ./:/app

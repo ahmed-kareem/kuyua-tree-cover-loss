@@ -2,12 +2,12 @@ window.prepareMap = (address) => {
     const token = "pk.eyJ1IjoiYWhtZWQta2FyZWVtIiwiYSI6ImNsd2dyNGcxODA3cWIycXBmaGR0cmR1MDQifQ.WQEt6T2zLTS3F8fJ6SOwdA";
     mapboxgl.accessToken = token;
     
-    // const map = new mapboxgl.Map({
-    //     container: 'map',
-    //     style: 'mapbox://styles/mapbox/streets-v12',
-    //     center: [-79.4512, 43.6568],
-    //     zoom: 8
-    // });
+    const map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/streets-v12',
+        center: [-79.4512, 43.6568],
+        zoom: 8
+    });
     var url = "https://api.mapbox.com/geocoding/v5/mapbox.places/" + encodeURIComponent(address) + ".json?access_token=" + token;
 
     fetch(url)

@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start":"node index.js",
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "ahmed kareem",
@@ -11,6 +11,7 @@
   "description": "this project is used to calculate tree cover loss based on longitude and latitude for a specific location and integrating with GEE (google earth engine) to do the calculation and proivides this data in json format for frontend apps",
   "dependencies": {
     "@google/earthengine": "^0.1.403",
+    "cors": "^2.8.5",
     "express": "^4.19.2",
     "google-auth-library": "^9.10.0",
     "winston": "^3.13.0"

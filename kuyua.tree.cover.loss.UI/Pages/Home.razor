@@ -5,7 +5,9 @@
 
 <PageTitle>Home</PageTitle>
 
-<h1>Locations</h1>
+<h1>Locations
+    <Icon Name="IconName.GeoAlt " Size="IconSize.x2" Color="IconColor.Primary" />
+</h1>
 <Modal @ref="modal" />
 
 <Button Color="ButtonColor.Primary" @onclick="ShowLocationComponent">Add new location</Button>
@@ -58,9 +60,9 @@ else
     protected override async Task OnInitializedAsync()
     {
         locations = new()
-        {
-            new Location(){City="cairo", Country="Egypt", Street = "abu bakr", ZipCode = "12365"},
-        };
+{
+new Location(){City="cairo", Country="Egypt", Street = "abu bakr", ZipCode = "12365"},
+};
     }
     private void addLocation(MouseEventArgs e)
     {
@@ -70,12 +72,12 @@ else
     private void RedirectToMap(Location item)
     {
         var queryParams = new Dictionary<string, string>
-        {
-            { "country", item.Country },
-            { "city", item.City },
-            { "street", item.Street },
-            { "zipcode", item.ZipCode }
-        };
+{
+{ "country", item.Country },
+{ "city", item.City },
+{ "street", item.Street },
+{ "zipcode", item.ZipCode }
+};
         Navigation.NavigateTo(QueryHelpers.AddQueryString("/map", queryParams));
     }
 }

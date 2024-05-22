@@ -2,12 +2,12 @@ services:
   kuyua-api:
     build: ../kuyua.tree.cover.loss.API
     ports:
-      - "8080:3000" # Map host port 8080 to container port 3000 (adjust if needed)
+      - "3000:3000" # Map host port 8080 to container port 3000 (adjust if needed)
     volumes:
       - ./:/app
   kuyua-ui:
     build: ../kuyua.tree.cover.loss.UI
     ports:
-      - "8050:8080" # Map host port 8080 to container port 3000 (adjust if needed)
+      - "8080:8080" # Map host port 8080 to container port 3000 (adjust if needed)
     volumes:
       - ./:/app

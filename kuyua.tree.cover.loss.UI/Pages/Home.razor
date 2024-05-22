@@ -1,0 +1,81 @@
+﻿@page "/"
+@using kuyua.tree.cover.loss.UI.components
+@using kuyua.tree.cover.loss.UI.models;
+@inject NavigationManager Navigation
+
+<PageTitle>Home</PageTitle>
+
+<h1>Locations</h1>
+<Modal @ref="modal" />
+
+<Button Color="ButtonColor.Primary" @onclick="ShowLocationComponent">Add new location</Button>
+
+<button class="btn btn-primary" @onclick="InitializeLocations">Add Location</button>
+@if (locations == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>street</th>
+                <th>country</th>
+                <th>city</th>
+                <th>zipcode</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var location in locations)
+            {
+                <tr @onclick="()=>RedirectToMap(location)">
+                    <td>@location.Street</td>
+                    <td>@location.Country</td>
+                    <td>@location.City</td>
+                    <td>@location.ZipCode</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+@code {
+    private Modal modal = default!;
+    private List<Location> locations;
+    private void InitializeLocations()
+    {
+        locations[0].City = "cairo";
+        locations[0].Country = "Egypt";
+        locations[0].Street = "sheraton";
+        locations[0].ZipCode = "112546";
+    }
+    private async Task ShowLocationComponent()
+    {
+        var parameters = new Dictionary<string, object>();
+        parameters.Add("OnclickCallback", EventCallback.Factory.Create<MouseEventArgs>(this, addLocation));
+        await modal.ShowAsync<LocationModal>(title: "locations", parameters: null);
+    }
+    protected override async Task OnInitializedAsync()
+    {
+        locations = new()
+        {
+            new Location(){City="cairo", Country="Egypt", Street = "abu bakr", ZipCode = "12365"},
+        };
+    }
+    private void addLocation(MouseEventArgs e)
+    {
+        Console.WriteLine("hurray");
+    }
+
+    private void RedirectToMap(Location item)
+    {
+        var queryParams = new Dictionary<string, string>
+        {
+            { "country", item.Country },
+            { "city", item.City },
+            { "street", item.Street },
+            { "zipcode", item.ZipCode }
+        };
+        Navigation.NavigateTo(QueryHelpers.AddQueryString("/map", queryParams));
+    }
+}

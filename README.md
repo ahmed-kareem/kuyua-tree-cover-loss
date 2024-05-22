@@ -18,4 +18,6 @@ now you can open the directory where you cloned the repo and run the project
 
 ### open the project in the browser
 now you can access the APIs directly on this url > http://localhost:3000/api
+the api that is responsible for calculating tree cover loss > http://localhost:3000/api/tree-cover-loss?latlng=65.14,17.25 
+
 and the forntend porject will be up and running on this url > http:localhost:4000

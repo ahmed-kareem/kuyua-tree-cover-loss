@@ -1,0 +1,5 @@
+kuyua.tree.cover.loss.API/node_modules/
+kuyua.tree.cover.loss.API/secrets/*
+kuyua.tree.cover.loss.UI/.vs
+kuyua.tree.cover.loss.UI/bin
+kuyua.tree.cover.loss.UI/obj

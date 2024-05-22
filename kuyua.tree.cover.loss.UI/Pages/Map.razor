@@ -1,0 +1,42 @@
+﻿@page "/map"
+@inject HttpClient Http
+@inject IJSRuntime jsruntime;
+
+<PageTitle>Tree Cover Loss Map</PageTitle>
+
+<h1>map</h1>
+
+<!DOCTYPE html>
+<html>
+
+<body>
+    <div id="map"></div>
+
+</body>
+
+</html>
+
+@code {
+    private string? city;
+    private string? country;
+    private string? street;
+    private string? zipcode;
+    string token = "pk.eyJ1IjoiYWhtZWQta2FyZWVtIiwiYSI6ImNsd2dyNGcxODA3cWIycXBmaGR0cmR1MDQifQ.WQEt6T2zLTS3F8fJ6SOwdA";
+    protected override async void OnInitialized()
+    {
+
+        var uri = Navigation.ToAbsoluteUri(Navigation.Uri);
+        var query = QueryHelpers.ParseQuery(uri.Query);
+
+        if (query.TryGetValue("city", out var cty)) city = cty;
+        if (query.TryGetValue("country", out var cntry)) country = cntry;
+        if (query.TryGetValue("street", out var stret)) street = stret;
+        if (query.TryGetValue("zipcode", out var zcode)) zipcode = zcode;
+        await jsruntime.InvokeVoidAsync("prepareMap", country + street + city + zipcode);
+        //var coordinates = await
+        //Http.GetFromJsonAsync<locations[]>($"https://api.mapbox.com/geocoding/v5/mapbox.places/{city,country,stree,zipcode}.json?access_token={token}");
+        //var treecoverloss = await
+        //Http.GetFromJsonAsync<WeatherForecast[]>($"https://localhost:3000/api/tree-cover-loss?latlng={coordinates}");
+
+    }
+}

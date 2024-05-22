@@ -20,4 +20,13 @@ now you can open the directory where you cloned the repo and run the project
 now you can access the APIs directly on this url > http://localhost:3000/api
 the api that is responsible for calculating tree cover loss > http://localhost:3000/api/tree-cover-loss?latlng=65.14,17.25 
 
-and the forntend porject will be up and running on this url > http:localhost:4000
+and the forntend porject will be up and running on this url > http:localhost:8080
+or you can run each project without docker as follow
+//for the APIs
+> cd kuyua.tree.cover.loss.API
+> node index.js
+//for the UI
+> cd kuyua.tree.cover.loss.UI
+> dotnet run
+ now the apis are running on > http://localhost:3000 and the UI http://localhost:5202
+**note that you must install dotnet 8 sdk and nodejs 19** 
